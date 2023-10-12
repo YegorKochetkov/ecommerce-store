@@ -1,6 +1,7 @@
 import React from "react";
 
 import NoResults from "@/components/ui/no-results";
+import ProductCard from "@/components/ui/product-card";
 import { Product } from "@/types";
 
 const ProductList = ({ title, items }: { title: string; items: Product[] }) => {
@@ -10,9 +11,9 @@ const ProductList = ({ title, items }: { title: string; items: Product[] }) => {
       {items.length === 0 ? (
         <NoResults />
       ) : (
-        <ul>
+        <ul className='flex flex-wrap gap-4'>
           {items.map((item) => (
-            <li key={item.id}>{item.name}</li>
+            <ProductCard key={item.id} data={item} />
           ))}
         </ul>
       )}
