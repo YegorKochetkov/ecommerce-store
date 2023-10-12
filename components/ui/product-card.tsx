@@ -12,7 +12,7 @@ const ProductCard = ({ data }: { data: Product }) => {
   return (
     <article
       className='bg-white group cursor-pointer rounded-xl border p-3 space-y-4
-        max-w-xs w-full'
+        max-w-xs basis-56 flex-shrink flex-grow'
     >
       <div className='rounded-xl aspect-square bg-gray-100 relative'>
         <Image
