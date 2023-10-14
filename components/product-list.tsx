@@ -13,7 +13,12 @@ const ProductList = ({ title, items }: { title: string; items: Product[] }) => {
       ) : (
         <ul className='flex flex-wrap gap-4'>
           {items.map((item) => (
-            <ProductCard key={item.id} data={item} />
+            <li
+              key={item.id}
+              className='max-w-xs basis-56 flex-shrink flex-grow'
+            >
+              <ProductCard data={item} />
+            </li>
           ))}
         </ul>
       )}

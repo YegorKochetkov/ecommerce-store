@@ -9,38 +9,66 @@ import IconButton from "@/components/ui/icon-button";
 import Currency from "@/components/ui/currency";
 
 const ProductCard = ({ data }: { data: Product }) => {
+  const boundingRef = React.useRef<DOMRect | null>(null);
+
   return (
-    <article
-      className='bg-white group cursor-pointer rounded-xl border p-3 space-y-4
-        max-w-xs basis-56 flex-shrink flex-grow'
-    >
-      <div className='rounded-xl aspect-square bg-gray-100 relative'>
-        <Image
-          src={data.images[0].url}
-          alt={data.name}
-          fill
-          className='object-cover aspect-square rounded-md'
-        />
-        <div
-          className='opacity-0 group-hover:opacity-100 flex justify-center
-            transition absolute px-6 bottom-5 w-full gap-4'
-        >
-          <IconButton
-            onClick={() => {}}
-            icon={<Expand size={20} className='text-gray-600' />}
+    <div className='[perspective:800px] max-w-lg'>
+      <article
+        onMouseLeave={() => (boundingRef.current = null)}
+        onMouseEnter={(ev) => {
+          boundingRef.current = ev.currentTarget.getBoundingClientRect();
+        }}
+        onMouseMove={(ev) => {
+          if (!boundingRef.current) return;
+
+          const x = ev.clientX - boundingRef.current.left;
+          const y = ev.clientY - boundingRef.current.top;
+          const xPercentage = x / boundingRef.current.width;
+          const yPercentage = y / boundingRef.current.height;
+          const xRotation = (xPercentage - 0.5) * 20;
+          const yRotation = (0.5 - yPercentage) * 20;
+
+          ev.currentTarget.style.setProperty("--x-rotation", `${yRotation}deg`);
+          ev.currentTarget.style.setProperty("--y-rotation", `${xRotation}deg`);
+          ev.currentTarget.style.setProperty("--x", `${xPercentage * 80}%`);
+          ev.currentTarget.style.setProperty("--y", `${yPercentage * 60}%`);
+        }}
+        className='bg-white group cursor-pointer rounded-xl border p-3 space-y-4
+          hover:[transform:rotateX(var(--x-rotation))_rotateY(var(--y-rotation))_scale(1.05)]
+          transition-transform ease-out relative overflow-hidden'
+      >
+        <div className='rounded-xl aspect-square bg-gray-100 relative'>
+          <Image
+            src={data.images[0].url}
+            alt={data.name}
+            fill
+            className='object-cover aspect-square rounded-md'
           />
-          <IconButton
-            onClick={() => {}}
-            icon={<ShoppingCart size={20} className='text-gray-600' />}
-          />
+          <div
+            className='opacity-0 group-hover:opacity-100 flex justify-center
+              transition absolute px-6 bottom-5 w-full gap-4 z-10'
+          >
+            <IconButton
+              onClick={() => {}}
+              icon={<Expand size={20} className='text-gray-600' />}
+            />
+            <IconButton
+              onClick={() => {}}
+              icon={<ShoppingCart size={20} className='text-gray-600' />}
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <h3 className='font-semibold text-lg'>{data.name}</h3>
-        <p className='text-sm text-gray-500'>{data.category.name}</p>
-      </div>
-      <Currency value={data.price} />
-    </article>
+        <div>
+          <h3 className='font-semibold text-lg'>{data.name}</h3>
+          <p className='text-sm text-gray-500'>{data.category.name}</p>
+        </div>
+        <Currency value={data.price} />
+        <div
+          className='glare absolute inset-0 pointer-events-none
+            group-hover:bg-[radial-gradient(at_var(--x)_var(--y),rgba(255,255,255,0.3)_10%,transparent_70%)]'
+        />
+      </article>
+    </div>
   );
 };
 
