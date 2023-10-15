@@ -12,7 +12,7 @@ const ProductCard = ({ data }: { data: Product }) => {
   const boundingRef = React.useRef<DOMRect | null>(null);
 
   return (
-    <div className='[perspective:800px] max-w-lg'>
+    <div className='[perspective:800px] max-w-lg '>
       <article
         onMouseLeave={() => (boundingRef.current = null)}
         onMouseEnter={(ev) => {
@@ -35,7 +35,9 @@ const ProductCard = ({ data }: { data: Product }) => {
         }}
         className='bg-white group cursor-pointer rounded-xl border p-3 space-y-4
           hover:[transform:rotateX(var(--x-rotation))_rotateY(var(--y-rotation))_scale(1.05)]
-          transition-transform ease-out relative overflow-hidden'
+          transition-transform ease-out relative overflow-hidden
+          after:content-[""] after:absolute after:inset-0 after:pointer-events-none
+          hover:after:bg-[radial-gradient(at_var(--x)_var(--y),rgba(255,255,255,0.2)_10%,transparent_70%)]'
       >
         <div className='rounded-xl aspect-square bg-gray-100 relative'>
           <Image
@@ -63,10 +65,6 @@ const ProductCard = ({ data }: { data: Product }) => {
           <p className='text-sm text-gray-500'>{data.category.name}</p>
         </div>
         <Currency value={data.price} />
-        <div
-          className='glare absolute inset-0 pointer-events-none
-            group-hover:bg-[radial-gradient(at_var(--x)_var(--y),rgba(255,255,255,0.3)_10%,transparent_70%)]'
-        />
       </article>
     </div>
   );
