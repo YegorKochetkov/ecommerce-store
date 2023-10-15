@@ -8,11 +8,14 @@ import { Product } from "@/types";
 import IconButton from "@/components/ui/icon-button";
 import Currency from "@/components/ui/currency";
 
-const ProductCard = ({ data }: { data: Product }) => {
+const ProductCard = ({ data, delay }: { data: Product; delay: number }) => {
   const boundingRef = React.useRef<DOMRect | null>(null);
 
   return (
-    <div className='[perspective:800px] max-w-lg '>
+    <div
+      className='[perspective:800px] max-w-lg animate-card opacity-0'
+      style={{ animationDelay: `${delay * 0.1}s` }}
+    >
       <article
         onMouseLeave={() => (boundingRef.current = null)}
         onMouseEnter={(ev) => {

@@ -12,12 +12,12 @@ const ProductList = ({ title, items }: { title: string; items: Product[] }) => {
         <NoResults />
       ) : (
         <ul className='flex flex-wrap gap-4'>
-          {items.map((item) => (
+          {items.map((item, index) => (
             <li
               key={item.id}
               className='max-w-xs basis-56 flex-shrink flex-grow'
             >
-              <ProductCard data={item} />
+              <ProductCard data={item} delay={index} />
             </li>
           ))}
         </ul>
