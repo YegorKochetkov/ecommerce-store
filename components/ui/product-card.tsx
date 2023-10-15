@@ -43,7 +43,8 @@ const ProductCard = ({ data }: { data: Product }) => {
           <Image
             src={data.images[0].url}
             alt={data.name}
-            fill
+            width={500}
+            height={500}
             className='object-cover aspect-square rounded-md'
           />
           <div
