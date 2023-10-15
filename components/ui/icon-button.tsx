@@ -19,6 +19,7 @@ const IconButton = ({
       className={cn(
         "rounded-full flex items-center justify-center bg-white border p-2",
         "shadow-md bg-opacity-70 hover:scale-110 hover:bg-opacity-100 transition",
+        "active:scale-95",
         className
       )}
     >
