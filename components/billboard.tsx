@@ -8,7 +8,7 @@ const Billboard = ({ data }: { data: BillboardType }) => {
       <div
         style={{ backgroundImage: `url(${data.imageUrl})` }}
         className='rounded-xl overflow-hidden aspect-square sm:aspect-[5/2]
-          lg:aspect-[9/3] 2xl:aspect-[10/3] bg-center bg-cover bg-no-repeat p-3'
+          lg:aspect-[10/3] 2xl:aspect-[12/3] bg-center bg-cover bg-no-repeat p-3'
       >
         <div className='w-full h-full grid place-items-center'>
           <h1
