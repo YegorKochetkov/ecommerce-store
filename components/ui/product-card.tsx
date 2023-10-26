@@ -10,6 +10,21 @@ import Currency from "@/components/ui/currency";
 
 const ProductCard = ({ data, delay }: { data: Product; delay: number }) => {
   const boundingRef = React.useRef<DOMRect | null>(null);
+  const handleMouseMove = (ev: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    if (!boundingRef.current) return;
+
+    const x = ev.clientX - boundingRef.current.left;
+    const y = ev.clientY - boundingRef.current.top;
+    const xPercentage = x / boundingRef.current.width;
+    const yPercentage = y / boundingRef.current.height;
+    const xRotation = (xPercentage - 0.5) * 20;
+    const yRotation = (0.5 - yPercentage) * 20;
+
+    ev.currentTarget.style.setProperty("--x-rotation", `${yRotation}deg`);
+    ev.currentTarget.style.setProperty("--y-rotation", `${xRotation}deg`);
+    ev.currentTarget.style.setProperty("--x", `${xPercentage * 80}%`);
+    ev.currentTarget.style.setProperty("--y", `${yPercentage * 60}%`);
+  };
 
   return (
     <div
@@ -17,25 +32,13 @@ const ProductCard = ({ data, delay }: { data: Product; delay: number }) => {
       style={{ animationDelay: `${delay * 0.1}s` }}
     >
       <article
-        onMouseLeave={() => (boundingRef.current = null)}
+        onMouseLeave={() => {
+          boundingRef.current = null;
+        }}
         onMouseEnter={(ev) => {
           boundingRef.current = ev.currentTarget.getBoundingClientRect();
         }}
-        onMouseMove={(ev) => {
-          if (!boundingRef.current) return;
-
-          const x = ev.clientX - boundingRef.current.left;
-          const y = ev.clientY - boundingRef.current.top;
-          const xPercentage = x / boundingRef.current.width;
-          const yPercentage = y / boundingRef.current.height;
-          const xRotation = (xPercentage - 0.5) * 20;
-          const yRotation = (0.5 - yPercentage) * 20;
-
-          ev.currentTarget.style.setProperty("--x-rotation", `${yRotation}deg`);
-          ev.currentTarget.style.setProperty("--y-rotation", `${xRotation}deg`);
-          ev.currentTarget.style.setProperty("--x", `${xPercentage * 80}%`);
-          ev.currentTarget.style.setProperty("--y", `${yPercentage * 60}%`);
-        }}
+        onMouseMove={(ev) => handleMouseMove(ev)}
         className='bg-white group cursor-pointer rounded-xl border p-3 space-y-4
           hover:[transform:rotateX(var(--x-rotation))_rotateY(var(--y-rotation))_scale(1.05)]
           transition-transform ease-out relative overflow-hidden
