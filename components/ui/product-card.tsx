@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Expand, ShoppingCart } from "lucide-react";
 
 import { Product } from "@/types";
@@ -10,6 +11,7 @@ import Currency from "@/components/ui/currency";
 
 const ProductCard = ({ data, delay }: { data: Product; delay: number }) => {
   const boundingRef = React.useRef<DOMRect | null>(null);
+  const router = useRouter();
   const handleMouseMove = (ev: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (!boundingRef.current) return;
 
@@ -25,11 +27,15 @@ const ProductCard = ({ data, delay }: { data: Product; delay: number }) => {
     ev.currentTarget.style.setProperty("--x", `${xPercentage * 80}%`);
     ev.currentTarget.style.setProperty("--y", `${yPercentage * 60}%`);
   };
+  const handleClick = () => {
+    router.push(`/product/${data.id}`);
+  };
 
   return (
     <div
       className='[perspective:800px] max-w-lg animate-card opacity-0'
       style={{ animationDelay: `${delay * 0.1}s` }}
+      onClick={handleClick}
     >
       <article
         onMouseLeave={() => {
