@@ -14,15 +14,15 @@ const ProductPage = async ({ params }: { params: { productId: string } }) => {
   });
 
   return (
-    <main className='bg-white pb-10 px-4 sm:px-6 sm:py-10 lg:px-8'>
+    <main className='bg-white py-6 px-4 sm:px-6 sm:py-10 lg:px-8'>
       <div className='container mx-auto'>
         <section className='px-4 pb-10 sm:px-6 lg:px-8'>
           <div
-            className='flex flex-col-reverse sm:flex-col gap-y-4 lg:grid lg:grid-cols-2
-              lg:items-start sm:gap-x-8'
+            className='flex flex-col-reverse sm:flex-col gap-y-4 lg:grid
+              lg:grid-cols-2 lg:items-start sm:gap-x-8'
           >
             <Gallery images={product.images} productName={product.name} />
-            <div className='mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0'>
+            <div className='px-4 sm:mt-10 sm:px-0 lg:mt-0'>
               <Info data={product} />
             </div>
           </div>
