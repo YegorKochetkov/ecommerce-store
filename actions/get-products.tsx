@@ -1,22 +1,22 @@
-import queryString from "query-string";
+import queryString from 'query-string';
 
-import { Product } from "@/types";
+import { Product } from '@/types';
 
 const productsUrl = `${process.env.NEXT_PUBLIC_API_URL}/products`;
 
 type Query = {
-  categoryId?: string;
-  colorId?: string;
-  sizeId?: string;
-  isFeatured?: boolean;
+	categoryId?: string;
+	colorId?: string;
+	sizeId?: string;
+	isFeatured?: boolean;
 };
 
 export const getProducts = async (query: Query): Promise<Product[]> => {
-  const url = queryString.stringifyUrl({
-    url: productsUrl,
-    query,
-  });
-  const res = await fetch(url);
+	const url = queryString.stringifyUrl({
+		url: productsUrl,
+		query,
+	});
+	const res = await fetch(url);
 
-  return res.json();
+	return res.json();
 };

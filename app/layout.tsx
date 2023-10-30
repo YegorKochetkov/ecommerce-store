@@ -1,30 +1,30 @@
-import type { Metadata } from "next";
-import { Urbanist } from "next/font/google";
+import type { Metadata } from 'next';
+import { Urbanist } from 'next/font/google';
 
-import Footer from "@/components/footer";
-import Navbar from "@/components/navbar";
+import Footer from '@/components/footer';
+import Navbar from '@/components/navbar';
 
-import "./globals.css";
+import './globals.css';
 
-const font = Urbanist({ subsets: ["latin"] });
+const font = Urbanist({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Store",
-  description: "Best store in the world",
+	title: 'Store',
+	description: 'Best store in the world',
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang='en'>
-      <body className={font.className}>
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
-    </html>
-  );
+	return (
+		<html lang='en'>
+			<body className={font.className}>
+				<Navbar />
+				{children}
+				<Footer />
+			</body>
+		</html>
+	);
 }
