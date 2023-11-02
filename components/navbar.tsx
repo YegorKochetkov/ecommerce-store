@@ -16,7 +16,7 @@ const Navbar = async () => {
 				<Link href='/'>
 					<span className='font-bold text-xl'>STORE</span>
 				</Link>
-				<span className='mr-auto'>
+				<span className='mr-auto sm:ml-8'>
 					<MainNav data={categories} />
 				</span>
 				<NavbarActions />
