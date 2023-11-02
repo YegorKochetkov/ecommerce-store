@@ -11,10 +11,10 @@ import Currency from '@/components/ui/currency';
 
 const ProductCard = ({
 	data,
-	appearDelay,
+	appearDelay = 0,
 }: {
 	data: Product;
-	appearDelay: number;
+	appearDelay?: number;
 }) => {
 	const boundingRef = React.useRef<DOMRect | null>(null);
 	const router = useRouter();
