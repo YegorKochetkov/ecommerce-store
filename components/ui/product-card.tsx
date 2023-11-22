@@ -51,11 +51,8 @@ const ProductCard = ({
 					boundingRef.current = ev.currentTarget.getBoundingClientRect();
 				}}
 				onMouseMove={(ev) => handleMouseMove(ev)}
-				className='bg-white group cursor-pointer rounded-xl border p-3 space-y-4
-          hover:[transform:rotateX(var(--x-rotation))_rotateY(var(--y-rotation))_scale(1.05)]
-          transition-transform ease-out relative overflow-hidden
-          after:content-[""] after:absolute after:inset-0 after:pointer-events-none
-          hover:after:bg-[radial-gradient(at_var(--x)_var(--y),rgba(255,255,255,0.2)_10%,transparent_70%)]'
+				className='bg-white group cursor-pointer rounded-xl border p-3
+					space-y-4	relative overflow-hidden card-hover-3d-effect'
 			>
 				<div className='rounded-xl aspect-square bg-gray-100 relative'>
 					<Image
@@ -67,7 +64,7 @@ const ProductCard = ({
 					/>
 					<div
 						className='opacity-0 group-hover:opacity-100 flex justify-center
-              transition absolute px-6 bottom-5 w-full gap-4 z-10'
+							transition absolute px-6 bottom-5 w-full gap-4 z-10'
 					>
 						<IconButton
 							onClick={() => {}}

@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body,
-:root {
-	height: 100dvh;
+@layer components {
+	.card-hover-3d-effect {
+		@apply hover:[transform:rotateX(var(--x-rotation))_rotateY(var(--y-rotation))_scale(1.05)]
+			transition-transform ease-out	after:content-[""] after:absolute
+			after:inset-0 after:pointer-events-none
+			hover:after:bg-[radial-gradient(at_var(--x)_var(--y),rgba(255,255,255,0.2)_10%,transparent_70%)];
+	}
 }
