@@ -11,7 +11,10 @@ const ProductList = ({ title, items }: { title: string; items: Product[] }) => {
 			{items.length === 0 ? (
 				<NoResults />
 			) : (
-				<ul className='flex flex-wrap gap-4'>
+				<ul
+					className='grid grid-cols-1 justify-items-center sm:grid-cols-2
+						md:flex gap-4 sm:justify-items-start'
+				>
 					{items.map((item, index) => (
 						<li
 							key={item.id}
