@@ -16,7 +16,7 @@ const Gallery = ({
 	productName: string;
 }) => {
 	return (
-		<Tab.Group as='div' className='flex flex-col-reverse'>
+		<Tab.Group as='div' className='flex flex-col-reverse max-w-lg'>
 			<div className='mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none'>
 				<Tab.List className='grid grid-cols-4 gap-6'>
 					{images.map((image) => (
@@ -35,7 +35,7 @@ const Gallery = ({
 									width={500}
 									height={500}
 									className='aspect-square relative h-full w-full sm:rounded-lg
-                  overflow-hidden object-cover object-center hidden sm:block'
+										overflow-hidden object-cover object-center hidden sm:block'
 								/>
 							</Tab.Panel>
 						</Tab.Panels>
@@ -45,7 +45,7 @@ const Gallery = ({
 							width={500}
 							height={500}
 							className='aspect-square relative h-full w-full sm:rounded-lg
-            overflow-hidden object-cover object-center sm:hidden'
+								overflow-hidden object-cover object-center sm:hidden'
 						/>
 					</React.Fragment>
 				))}
