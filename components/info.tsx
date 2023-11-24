@@ -16,17 +16,27 @@ const Info = ({ data }: { data: Product }) => {
 				</p>
 			</div>
 			<hr className='my-4' />
-			<div className='flex flex-col gap-y-3 mb-10'>
-				<div className='flex items-center gap-x-4'>
-					<h2 className='font-semibold text-black'>Size:</h2>
-					<p>{data.size.name}</p>
+			<div className='mb-4'>
+				<div className='flex flex-col gap-y-3 mb-10'>
+					<div className='flex items-center gap-x-4'>
+						<h2 className='font-semibold text-black'>Size:</h2>
+						<p>{data.size.name}</p>
+					</div>
+					<div className='flex items-center gap-x-4'>
+						<h2 className='font-semibold text-black'>Color:</h2>
+						<div
+							className='h-6 w-6 rounded-full border border-gray-600'
+							style={{ backgroundColor: data.color.value }}
+						/>
+					</div>
 				</div>
-				<div className='flex items-center gap-x-4'>
-					<h2 className='font-semibold text-black'>Color:</h2>
-					<div
-						className='h-6 w-6 rounded-full border border-gray-600'
-						style={{ backgroundColor: data.color.value }}
-					/>
+				<div className='text-xl'>
+					{data.description.split('\n').map((paragraph, index) => (
+						<React.Fragment key={index}>
+							<p>{paragraph}</p>
+							<br />
+						</React.Fragment>
+					))}
 				</div>
 			</div>
 			<Button className='flex items-center gap-x-2'>
