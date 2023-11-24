@@ -19,8 +19,8 @@ const CategoryPage = async ({
 }: {
 	params: { categoryId: string };
 	searchParams: {
-		colorId: string;
-		sizeId: string;
+		colorId: string | string[];
+		sizeId: string | string[];
 	};
 }) => {
 	const products = await getProducts({
@@ -44,8 +44,8 @@ const CategoryPage = async ({
 				</div>
 
 				<div
-					className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
-						lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-items-center'
+					className='grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-6
+						justify-items-center sm:justify-items-start'
 				>
 					<div className='hidden lg:block'>
 						<Filter valueKey='sizeId' filters={sizes} name='Sizes' />
@@ -53,18 +53,26 @@ const CategoryPage = async ({
 					</div>
 
 					{products.length === 0 ? (
-						<div className='mt-8 col-span-3 xl:col-span-4'>
+						<div className='mt-8 mx-auto'>
 							<NoResults />
 						</div>
 					) : null}
 
-					<div className='mt-6 lg:mt-0'>
+					<div
+						className='flex flex-row flex-wrap gap-3 mt-6 lg:mt-0
+							justify-center sm:justify-start'
+					>
 						{products.map((product, index) => (
-							<ProductCard
+							<div
 								key={product.id}
-								data={product}
-								appearDelay={index}
-							/>
+								className='max-w-xs basis-56 flex-shrink flex-grow'
+							>
+								<ProductCard
+									key={product.id}
+									data={product}
+									appearDelay={index}
+								/>
+							</div>
 						))}
 					</div>
 				</div>

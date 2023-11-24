@@ -19,18 +19,22 @@ const Filter = ({
 }) => {
 	const searchParams = useSearchParams();
 	const router = useRouter();
-	const selectedValue = searchParams.get(valueKey);
+	const selectedValues = searchParams.getAll(valueKey);
 
-	const onClick = (id: string) => {
+	const onFilter = (filterId: string) => {
 		const current = queryString.parse(searchParams.toString());
+		const newSelectedValues = new Set(selectedValues);
+
+		if (newSelectedValues.has(filterId)) {
+			newSelectedValues.delete(filterId);
+		} else {
+			newSelectedValues.add(filterId);
+		}
+
 		const query = {
 			...current,
-			[valueKey]: id,
+			[valueKey]: Array.from(newSelectedValues),
 		};
-
-		if (current[valueKey] === id) {
-			query[valueKey] = null;
-		}
 
 		const url = queryString.stringifyUrl(
 			{
@@ -54,9 +58,9 @@ const Filter = ({
 							className={cn(
 								'rounded-md text-sm text-gray-800 p-2 bg-white capitalize',
 								'border border-gray-300',
-								selectedValue === filter.id ? 'bg-black text-white' : '',
+								selectedValues.includes(filter.id) ? 'bg-black text-white' : '',
 							)}
-							onClick={() => onClick(filter.id)}
+							onClick={() => onFilter(filter.id)}
 						>
 							{filter.name}
 						</Button>
