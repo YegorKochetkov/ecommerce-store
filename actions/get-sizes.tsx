@@ -1,9 +1,22 @@
 import { Size } from '@/types';
 
 const sizesUrl = `${process.env.NEXT_PUBLIC_API_URL}/sizes`;
+let controller: AbortController;
 
 export const getSizes = async (): Promise<Size[]> => {
-	const res = await fetch(sizesUrl);
+	try {
+		if (controller) {
+			controller.abort();
+		}
 
-	return res.json();
+		controller = new AbortController();
+
+		const res = await fetch(sizesUrl, { signal: controller.signal });
+
+		return res.json();
+	} catch (error) {
+		console.debug('Can`t load all products', error);
+
+		return [];
+	}
 };
