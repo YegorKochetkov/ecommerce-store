@@ -5,15 +5,15 @@ import { Product } from '@/types';
 type PreviewModalStore = {
 	isOpen: boolean;
 	data?: Product;
-	open: (data: Product) => void;
-	close: () => void;
+	onOpen: (data: Product) => void;
+	onClose: () => void;
 };
 
 const usePreviewModal = create<PreviewModalStore>((set) => ({
 	isOpen: false,
 	data: undefined,
-	open: (data) => set({ isOpen: true, data }),
-	close: () => set({ isOpen: false }),
+	onOpen: (data) => set({ isOpen: true, data }),
+	onClose: () => set({ isOpen: false }),
 }));
 
 export default usePreviewModal;
