@@ -22,7 +22,7 @@ const Filter = ({
 	const selectedValues = searchParams.getAll(valueKey);
 
 	const onFilter = (filterId: string) => {
-		const current = queryString.parse(searchParams.toString());
+		const currentQuery = queryString.parse(searchParams.toString());
 		const newSelectedValues = new Set(selectedValues);
 
 		if (newSelectedValues.has(filterId)) {
@@ -32,7 +32,7 @@ const Filter = ({
 		}
 
 		const query = {
-			...current,
+			...currentQuery,
 			[valueKey]: Array.from(newSelectedValues),
 		};
 
