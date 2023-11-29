@@ -10,3 +10,10 @@
 			hover:after:bg-[radial-gradient(at_var(--x)_var(--y),rgba(255,255,255,0.2)_10%,transparent_70%)];
 	}
 }
+
+@layer utilities {
+	.text-shadow {
+		text-shadow: 0.25em 0 0.5em #000, -0.25em 0 0.5em #000, 0 0 0.5em #000,
+			0 0 0.25em #000;
+	}
+}

@@ -13,7 +13,7 @@ const Billboard = ({ data }: { data: BillboardType }) => {
 				<div className='w-full h-full grid place-items-center'>
 					<h1
 						className='font-bold text-3xl sm:text-4xl lg:text-5xl
-              p-3 sm:p-4 lg:p-6 rounded-xl bg-white bg-opacity-40'
+              p-3 sm:p-4 lg:p-6 rounded-xl text-white text-shadow'
 					>
 						{data.label}
 					</h1>

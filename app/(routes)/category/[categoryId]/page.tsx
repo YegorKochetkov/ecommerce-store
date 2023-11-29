@@ -67,11 +67,7 @@ const CategoryPage = async ({
 								key={product.id}
 								className='max-w-xs basis-56 flex-shrink flex-grow'
 							>
-								<ProductCard
-									key={product.id}
-									data={product}
-									appearDelay={index}
-								/>
+								<ProductCard data={product} appearDelay={index} />
 							</div>
 						))}
 					</div>
