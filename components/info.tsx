@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { ShoppingCart } from 'lucide-react';
 
@@ -5,8 +7,14 @@ import { Product } from '@/types';
 
 import Currency from '@/components/ui/currency';
 import Button from '@/components/ui/button';
+import useCart from '@/hooks/use-cart';
 
 const Info = ({ data }: { data: Product }) => {
+	const cart = useCart();
+	const onAddToCart: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+		cart.addItem(data);
+	};
+
 	return (
 		<article>
 			<h1 className='text-3xl font-bold text-gray-900'>{data.name}</h1>
@@ -39,7 +47,7 @@ const Info = ({ data }: { data: Product }) => {
 					))}
 				</div>
 			</div>
-			<Button className='flex items-center gap-x-2'>
+			<Button className='flex items-center gap-x-2' onClick={onAddToCart}>
 				Add to Cart
 				<ShoppingCart />
 			</Button>
