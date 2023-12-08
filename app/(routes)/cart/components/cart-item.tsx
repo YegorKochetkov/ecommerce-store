@@ -8,6 +8,7 @@ import { Product } from '@/types';
 import IconButton from '@/components/ui/icon-button';
 import Currency from '@/components/ui/currency';
 import useCart from '@/hooks/use-cart';
+import Link from 'next/link';
 
 const CartItem = ({
 	data,
@@ -43,7 +44,9 @@ const CartItem = ({
 					mr-3'
 				>
 					<div className='flex justify-between'>
-						<p className='text-lg font-semibold text-black'>{data.name}</p>
+						<h2 className='text-lg font-semibold text-black'>
+							<Link href={`/product/${data.id}`}>{data.name}</Link>
+						</h2>
 					</div>
 					<div className='my-3 flex text-sm'>
 						<p className='text-gray-500'>{data.color.name}</p>
