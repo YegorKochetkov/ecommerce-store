@@ -41,7 +41,11 @@ const Modal = ({
 										md:p-6 lg:p-8'
 								>
 									<div className='absolute right-3 top-3'>
-										<IconButton onClick={onClose} icon={<X size={15} />} />
+										<IconButton
+											onClick={onClose}
+											icon={<X size={15} />}
+											aria-label='Close dialog'
+										/>
 									</div>
 									{children}
 								</div>

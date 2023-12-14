@@ -84,10 +84,12 @@ const ProductCard = ({
 						<IconButton
 							onClick={onPreview}
 							icon={<Expand size={20} className='text-gray-600' />}
+							aria-label='Show product preview'
 						/>
 						<IconButton
 							onClick={onAddToCart}
 							icon={<ShoppingCart size={20} className='text-gray-600' />}
+							aria-label='Add to cart'
 						/>
 					</div>
 				</div>
