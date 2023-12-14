@@ -2,20 +2,20 @@
 
 import React from 'react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 import { useSearchParams } from 'next/navigation';
 
 import Button from '@/components/ui/button';
 import Currency from '@/components/ui/currency';
 import useCart from '@/hooks/use-cart';
-import toast from 'react-hot-toast';
 
 const Summary = () => {
 	const items = useCart((state) => state.items);
 	const removeAll = useCart((state) => state.removeAll);
 	const searchParams = useSearchParams();
 
-	const totalPrice = items.reduce((sum, item) => {
-		return sum + Number(item.price);
+	const totalPrice = items.reduce((totalSum, item) => {
+		return totalSum + Number(item.price);
 	}, 0);
 
 	const onCheckOut = async () => {
