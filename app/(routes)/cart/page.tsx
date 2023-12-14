@@ -35,7 +35,8 @@ const CartPage = () => {
 							))}
 						</ul>
 					</div>
-					<Summary />
+
+					{cart.items.length !== 0 && <Summary />}
 				</div>
 			</div>
 		</main>
