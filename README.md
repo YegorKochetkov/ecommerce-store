@@ -11,9 +11,7 @@ Application consists of two parts:
 
 ### [Open store](https://ecommerce-store-silk-seven.vercel.app/)
 
-## Video
-
-### [Video](./demo/e-commerce-demo-video.mp4)
+### [Watch the video](https://youtu.be/icnjmznJg8E)
 
 ## Stack
 
