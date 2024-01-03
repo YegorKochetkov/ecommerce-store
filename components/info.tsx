@@ -11,7 +11,7 @@ import useCart from '@/hooks/use-cart';
 
 const Info = ({ data }: { data: Product }) => {
 	const cart = useCart();
-	const onAddToCart: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+	const onAddToCart: React.MouseEventHandler<HTMLButtonElement> = () => {
 		cart.addItem(data);
 	};
 
