@@ -10,7 +10,7 @@ export const revalidate = 0;
 const HomePage = async () => {
 	const products = await getProducts({ isFeatured: true });
 	// TODO: move billboard id to .env
-	const billboard = await getBillboard("5d083d51-a365-4ee5-b0ad-4cbe33e34067");
+	const billboard = await getBillboard("f93f1ad4-b025-4e77-a77a-4b386ea54907");
 
 	return (
 		<main className="py-8 px-4 sm:px-6 lg:px-8">
